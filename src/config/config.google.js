@@ -6,16 +6,16 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:8000/auth/google/callback",
+      callbackURL: `${process.env.BACKEND_URL}/auth/google/callback`,
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
-        // Find or create user in DB
         const user = {
           ...profile._json,
-          'provider' : 'google'
-        }
-        return done(null,user);
+          provider: "google",
+        };
+
+        return done(null, user);
       } catch (error) {
         return done(error, null);
       }
