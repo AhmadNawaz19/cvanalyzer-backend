@@ -20,8 +20,8 @@ import passport from "./src/config/config.google.js";
 const app = express();
 
 app.use(cors({
-    origin : "http://localhost:5173",
-    credentials : true
+    origin: process.env.FRONTEND_URL,
+    credentials: true
 }))
 app.use(CookieParser())
 app.use(express.json())
