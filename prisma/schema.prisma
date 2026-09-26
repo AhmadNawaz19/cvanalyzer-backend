@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique
+  password String
+  provider String @default("local")
+  profile  String?
+
+  userFile    UserFile[]
+  analyzeFile AnalyzeFile[]
+  userReview  UserReview[]
+}
+
+model UserFile {
+  id           Int     @id @default(autoincrement())
+  description  String  @db.Text
+  userId       Int
+  files        Json
+  createdAt   DateTime @default(now())   
+
+  user         Users   @relation(fields: [userId], references: [id])
+  analyses    AnalyzeFile[]
+}
+
+model AnalyzeFile {
+  id          Int       @id @default(autoincrement())
+  name        String    @default("")
+  url         String    @db.Text
+  userId      Int
+  userFileId  Int
+  jobType     String
+  createdAt   DateTime  @default(now())
+  description String @db.Text
+
+  user        Users     @relation(fields: [userId], references: [id])
+  userFile    UserFile  @relation(fields: [userFileId], references: [id])
+} 
+
+model UserReview {
+  id          Int       @id @default(autoincrement())
+  rating        Int 
+  message     String    @db.Text
+  userId      Int
+
+  createdAt   DateTime @default(now())
+  user        Users     @relation(fields: [userId], references: [id])
+}
