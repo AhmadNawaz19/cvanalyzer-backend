@@ -5,4 +5,4 @@
 
 */
 -- AlterTable
-ALTER TABLE `analyzefile` ADD COLUMN `description` TEXT NOT NULL;
+ALTER TABLE `Analyzefile` ADD COLUMN `description` TEXT NOT NULL;
