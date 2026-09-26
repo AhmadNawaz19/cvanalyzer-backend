@@ -6,7 +6,7 @@
 
 */
 -- AlterTable
-ALTER TABLE `Analyzefile` ADD COLUMN `jobType` VARCHAR(191) NOT NULL,
+ALTER TABLE `AnalyzeFile` ADD COLUMN `jobType` VARCHAR(191) NOT NULL,
     ADD COLUMN `userFileId` INTEGER NOT NULL;
 
 -- AddForeignKey
