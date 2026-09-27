@@ -20,6 +20,6 @@ export const verifyTokenForLogin = async (req, res, next) => {
     if (!token){
         next()
     }else{
-        res.redirect("http://localhost:5173/profile")
+        res.redirect(`${process.env.FRONTEND_URL}/profile`)
     }
 }

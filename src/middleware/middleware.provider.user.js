@@ -18,7 +18,7 @@ export const ProviderUserValidation = async (req, res, next) => {
           sameSite: "none",
           maxAge: 7 * 24 * 60 * 60 * 1000,
         });
-        res.redirect("http://localhost:5173/profile");
+        res.redirect(`${process.env.FRONTEND_URL}/profile`);
       }
     } else {
       console.log("faile in provider user validation middleware..");

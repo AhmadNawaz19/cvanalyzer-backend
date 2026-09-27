@@ -7,7 +7,7 @@ export const ProviderUser = async (req, res) => {
     let response = await CreateProviderUser(req.user);
     console.log(response);
     if (!response.email) {
-      res.redirect("http://localhost:5173/login");
+      res.redirect(`${process.env.FRONTEND_URL}/login`);
     } else {
       const token = await createToken(response.email, response.id);
       console.log(token);
@@ -18,7 +18,7 @@ export const ProviderUser = async (req, res) => {
           sameSite: "none",
           maxAge: 7 * 24 * 60 * 60 * 1000,
         });
-        res.redirect("http://localhost:5173/profile");
+        res.redirect(`${process.env.FRONTEND_URL}/profile`);
       }
     }
   } catch (err) {
