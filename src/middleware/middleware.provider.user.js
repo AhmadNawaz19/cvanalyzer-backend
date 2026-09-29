@@ -3,11 +3,8 @@ import { createToken } from "../services/jwt.service.js";
 
 export const ProviderUserValidation = async (req, res, next) => {
   try {
-    console.log("github..", req.user);
-    console.log(req.user.email);
     if (req.user.email) {
       let response = await checkUserExist(req.user.email);
-      console.log(response);
       if (!response) {
         next();
       } else {

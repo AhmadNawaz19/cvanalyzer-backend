@@ -7,7 +7,6 @@ import { updatePicture } from "../services/user.service.js"
 export const controllerProfile = async (req, res, next) => {
     const file = req.file?.buffer
     const userName = req.body?.userName
-    console.log(file)
     if (!file && !userName) {
         return res.status(204).json({
             "success": false,
@@ -23,7 +22,6 @@ export const controllerProfile = async (req, res, next) => {
                 })
             } else {
                 const response = await updateNamePicture(result.secure_url, userName, req.user.email)
-                console.log('response profile update', response)
                 if (!response.success) {
                     return res.status(403).json(response)
                 } else {
@@ -39,7 +37,6 @@ export const controllerProfile = async (req, res, next) => {
                 })
             } else {
                 const response = await updatePicture(result.secure_url, req.user.email)
-                console.log('response profile update', response)
                 if (!response.success) {
                     return res.status(403).json(response)
                 } else {

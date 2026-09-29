@@ -69,7 +69,6 @@ export const updateNamePicture = async (file,userName, email) => {
 }
 
 export const updateName = async (userName, email) => {
-  console.log(userName)
   const result = await prisma.users.update({
     where : {
       email
@@ -132,7 +131,6 @@ export const fetchUserData = async (req, res) => {
 }
 
 export const historyData = async (req, res) => {
-  console.log(req.user)
   const result = await prisma.userFile.findMany({
     where : {
       userId : req.user.id
@@ -163,7 +161,6 @@ export const PreferCV = async (req, res) => {
 
 
 export const reviews = async (req,  res) => {
-  // console.log(req.body, req.user)
   const result = await prisma.userReview.create({
     data : {
       userId : req.user.id,

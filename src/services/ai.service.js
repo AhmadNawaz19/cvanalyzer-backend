@@ -57,7 +57,6 @@ Return ONLY the single best matching resume as raw JSON in this exact structure:
         );
 
         const rawResult = response.data.choices?.[0]?.message?.content;
-        console.log("Raw AI Output:", rawResult);
 
         if (!rawResult) {
             throw new Error("AI returned an empty response");
@@ -70,12 +69,10 @@ Return ONLY the single best matching resume as raw JSON in this exact structure:
             .trim();
 
         const bestResume = JSON.parse(cleanedResult);
-        console.log("Best Resume:", bestResume);
 
         return bestResume;
 
     } catch (err) {
-        console.error("Resume Analyze Error:", err.response?.data || err);
         throw err;
     }
 };

@@ -33,7 +33,6 @@ export const AnalyzedFile = async (userID, data, description) => {
                 description : description
             }
         })
-        console.log(result)
     }catch(err) {
         console.log(err)
     }

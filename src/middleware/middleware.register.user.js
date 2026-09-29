@@ -7,7 +7,6 @@ export const registerUser = async (req, res, next) => {
     try {
         const { name, email, password } = req.body
         let response = await checkUserExist(email)
-        console.log(response)
         if (!response) {
             next()
         } else {
@@ -27,7 +26,6 @@ export const validateUser = async (req, res, next) => {
     try {
         const { email, password } = req.body
         const response = await checkUserExist(email);
-        console.log('response -> ',response)
         if (!response) {
             return res.status(404).json({
                 success : false,

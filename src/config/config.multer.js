@@ -3,7 +3,6 @@ import multer from "multer"
 const storage = multer.memoryStorage();
 
 const ResumefileFilter = (req, file, cb) => {
-  console.log('the filter method cell')
   const allowedType = [
     "application/pdf"
   ]
